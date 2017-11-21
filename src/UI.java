@@ -4,9 +4,9 @@ public class UI {
 	
 	public void printHeader() {
 		
-		System.out.println("*****************************************************************************************************");
+		System.out.println("*************************************************************************************************");
 		System.out.println("           			Flight Reservation System");
-		System.out.println("*****************************************************************************************************");
+		System.out.println("*************************************************************************************************");
 		System.out.println("CustID| First Name |	SurName   | email        | phone   	 | Address   	 | Gender    | TicketId Flight   |	Food bookingRef   |	totalPrice");
 	}
 	
