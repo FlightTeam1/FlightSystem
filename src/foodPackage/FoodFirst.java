@@ -2,21 +2,18 @@ package foodPackage;
 import java.util.Scanner;
 public class FoodFirst implements Food {
 
-
-
-
-	public  double runningTotal;
+	public  double totalPrice;
 	private double itemPrice;
-	static boolean ordering = true;
+	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
 
-	public void menu() {
+	public void foodMenu() {
 
 		System.out.println("Select your choice of items \n");
-		System.out.println("1. Chicken burger with choice of drink ($2.00) \n");
-		System.out.println("2. Kyckling File med Pommes ($1.50)\n ");
-		System.out.println("3. Beef Sandwich ($1.00) \n");
-		System.out.println("4. Done \n");
+		System.out.println("1. Crispy fried chicken with Potato smash and Vanilla Fruit icecream ($5.00) \n");
+		System.out.println("2. Steam Fish Fillet with Garlic sauce and Strawberry smoothie ($6.50)\n ");
+		System.out.println("3. Beef Burrito with Lemon Tart ($7.00) \n");
+		System.out.println("4. Exit \n");
 		System.out.println("********************\n");
 
 	}
@@ -24,17 +21,17 @@ public class FoodFirst implements Food {
 	public double itemPrice(int foodItem) {
 		if (foodItem == 1) {
 			//burger= $2.00
-			System.out.println("You've ordered a Chicken burger with choice of drink");
+			System.out.println("You've ordered Crispy fried chicken with Potato smash and Vanilla Fruit icecream \n");
 			itemPrice = 2.00;
 		}
 		if (foodItem == 2) {
 			//fries = $1.50
-			System.out.println("You've ordered Kyckling File med Pommes");
+			System.out.println("You've ordered Steam Fish Fillet with Garlic sauce and Strawberry smoothie \n ");
 			itemPrice = 1.50;
 		}
 		if (foodItem == 3) {
 			//soda = $1.00
-			System.out.println("You've ordered Beef Sandwich");
+			System.out.println("You've ordered Beef Burrito with Lemon Tart \n");
 			itemPrice = 1.00;
 		}
 		quantity();
@@ -43,36 +40,44 @@ public class FoodFirst implements Food {
 		if("yes".equalsIgnoreCase(oneMore.toLowerCase())) {
 			executeOperation(foodItem);
 		} else {
-			done();
+			exit();
 		} 	
 		return itemPrice;
 
 	}
+
+
 	public double quantity() {
-		System.out.println("Enter quantity");       
+		System.out.println("Enter how much quantity you wish to order");       
 		double quantity = input.nextDouble();
 		calculatePrice(quantity, itemPrice);
 		return quantity;
 
 	}
+
+
 	public double calculatePrice(double quantity, double itemPrice) {
 		double calculatePrice = quantity*itemPrice;
-		System.out.println("Subtotal: "+ calculatePrice);
-		runningTotal += calculatePrice;
+		System.out.println("Price: "+ calculatePrice);
+		totalPrice += calculatePrice;
 		return calculatePrice;
 	}
-	public void done(){
-		ordering = false;
-		System.out.println("TotalPrice for food " +runningTotal);
+
+
+	public void exit(){
+		order = false;
+		System.out.println("Total Price for food " +totalPrice);
 		System.out.println("Enjoy your meal in flight ");
+		
 	}
+
 
 	public void executeOperation(int menuOption) {
 		int foodItem = 0;
 		input = new Scanner(System.in); 
 		do{
 
-			menu();
+			foodMenu();
 			menuOption = input.nextInt();    
 
 			switch(menuOption){
@@ -89,20 +94,26 @@ public class FoodFirst implements Food {
 				itemPrice(foodItem);
 				break;
 			case 4:
-				done();
+				exit();
 				break;      
 			default:
 				System.out.println("Invalid option.");
-				chooseOperations();
+				getFood();
 
 			}	
-		} while(ordering); {
+		} while(order); {
 		}
 	}
 
-	public void chooseOperations() {		
-		System.out.println("Welcome to First_Class Food Menu \n ");
+	public void getFood() {	
+		
+		System.out.println("**First Class Menu service** \n");		
+		System.out.println(" Welcome Aboard Lexicon Airlines \n ");
 		System.out.println("********************\n");
+		System.out.println(" All our meals are served with freshly baked bread and butter");
+		System.out.println(" Enjoy with our complimentary Champagne,fine wine, spirits, beer, cocktails and soft drinks.\n");
+		System.out.println("********************\n");
+
 		int menuOption = 0;
 		executeOperation(menuOption);	
 
@@ -110,7 +121,7 @@ public class FoodFirst implements Food {
 
 	public static void main(String[] args) {
 		FoodFirst p = new FoodFirst();
-		p.chooseOperations();
+		p.getFood();
 
 
 	}

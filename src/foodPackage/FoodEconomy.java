@@ -4,18 +4,18 @@ import java.util.Scanner;
 public class FoodEconomy implements Food {
 
 
-	public  double runningTotal;
+	public  double totalPrice;
 	private double itemPrice;
-	static boolean ordering = true;
+	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
 
-	public void menu() {
+	public void foodMenu() {
 
 		System.out.println("Select your choice of items \n");
 		System.out.println("1. Chicken burger with choice of drink ($2.00) \n");
 		System.out.println("2. Kyckling File med Pommes ($1.50)\n ");
 		System.out.println("3. Beef Sandwich ($1.00) \n");
-		System.out.println("4. Done \n");
+		System.out.println("4. Exit \n");
 		System.out.println("********************\n");
 
 	}
@@ -42,7 +42,7 @@ public class FoodEconomy implements Food {
 		if("yes".equalsIgnoreCase(oneMore.toLowerCase())) {
 			executeOperation(foodItem);
 		} else {
-			done();
+			exit();
 		} 	
 		return itemPrice;
 
@@ -57,12 +57,12 @@ public class FoodEconomy implements Food {
 	public double calculatePrice(double quantity, double itemPrice) {
 		double calculatePrice = quantity*itemPrice;
 		System.out.println("Subtotal: "+ calculatePrice);
-		runningTotal += calculatePrice;
+		totalPrice += calculatePrice;
 		return calculatePrice;
 	}
-	public void done(){
-		ordering = false;
-		System.out.println("TotalPrice for food " +runningTotal);
+	public void exit(){
+		order = false;
+		System.out.println("TotalPrice for food " +totalPrice);
 		System.out.println("Enjoy your meal in flight ");
 	}
 
@@ -71,7 +71,7 @@ public class FoodEconomy implements Food {
 		input = new Scanner(System.in); 
 		do{
 
-			menu();
+			foodMenu();
 			menuOption = input.nextInt();    
 
 			switch(menuOption){
@@ -88,20 +88,26 @@ public class FoodEconomy implements Food {
 				itemPrice(foodItem);
 				break;
 			case 4:
-				done();
+				exit();
 				break;      
 			default:
 				System.out.println("Invalid option.");
-				chooseOperations();
+				getFood();
 
 			}	
-		} while(ordering); {
+		} while(order); {
 		}
 	}
 
-	public void chooseOperations() {		
-		System.out.println("Welcome to First_Class Food Menu \n ");
+	public void getFood() {		
+		
+		System.out.println("**Economy Class Menu service** \n");
+		System.out.println(" Welcome Aboard Lexicon Airlines \n ");
 		System.out.println("********************\n");
+		System.out.println(" All our meals are served with freshly baked bread and butter");
+		System.out.println(" Enjoy with our complimentary Champagne,fine wine, spirits, beer, cocktails and soft drinks.\n");
+		System.out.println("********************\n");
+
 		int menuOption = 0;
 		executeOperation(menuOption);	
 
@@ -109,7 +115,7 @@ public class FoodEconomy implements Food {
 
 	public static void main(String[] args) {
 		FoodEconomy p = new FoodEconomy();
-		p.chooseOperations();
+		p.getFood();
 
 
 	}
