@@ -7,6 +7,55 @@ public class FoodFirst implements Food {
 	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
 
+	public void getFood() {	
+
+		System.out.println("**First Class Menu service** \n");		
+		System.out.println(" Welcome Aboard Lexicon Airlines \n ");
+		System.out.println("********************\n");
+		System.out.println(" All our meals are served with freshly baked bread and butter");
+		System.out.println(" Enjoy with our complimentary Champagne,fine wine, spirits, beer, cocktails and soft drinks.\n");
+		System.out.println("********************\n");
+
+		int menuOption = 0;
+		executeOperation(menuOption);	
+
+	}
+
+
+	public void executeOperation(int menuOption) {
+		int foodItem = 0;
+		input = new Scanner(System.in); 
+		do{
+
+			foodMenu();
+			menuOption = input.nextInt();    
+
+			switch(menuOption){
+			case 1:
+				foodItem = 1;
+				itemPrice(foodItem);
+				break;
+			case 2:
+				foodItem = 2;
+				itemPrice(foodItem);
+				break;
+			case 3:
+				foodItem = 3;
+				itemPrice(foodItem);
+				break;
+			case 4:
+				exit();
+				break;      
+			default:
+				System.out.println("Invalid option.");
+				getFood();
+
+			}	
+		} while(order); {
+		}
+	}
+
+
 	public void foodMenu() {
 
 		System.out.println("Select your choice of items \n");
@@ -17,6 +66,7 @@ public class FoodFirst implements Food {
 		System.out.println("********************\n");
 
 	}
+
 
 	public double itemPrice(int foodItem) {
 		if (foodItem == 1) {
@@ -68,56 +118,9 @@ public class FoodFirst implements Food {
 		order = false;
 		System.out.println("Total Price for food " +totalPrice);
 		System.out.println("Enjoy your meal in flight ");
-		
-	}
-
-
-	public void executeOperation(int menuOption) {
-		int foodItem = 0;
-		input = new Scanner(System.in); 
-		do{
-
-			foodMenu();
-			menuOption = input.nextInt();    
-
-			switch(menuOption){
-			case 1:
-				foodItem = 1;
-				itemPrice(foodItem);
-				break;
-			case 2:
-				foodItem = 2;
-				itemPrice(foodItem);
-				break;
-			case 3:
-				foodItem = 3;
-				itemPrice(foodItem);
-				break;
-			case 4:
-				exit();
-				break;      
-			default:
-				System.out.println("Invalid option.");
-				getFood();
-
-			}	
-		} while(order); {
-		}
-	}
-
-	public void getFood() {	
-		
-		System.out.println("**First Class Menu service** \n");		
-		System.out.println(" Welcome Aboard Lexicon Airlines \n ");
-		System.out.println("********************\n");
-		System.out.println(" All our meals are served with freshly baked bread and butter");
-		System.out.println(" Enjoy with our complimentary Champagne,fine wine, spirits, beer, cocktails and soft drinks.\n");
-		System.out.println("********************\n");
-
-		int menuOption = 0;
-		executeOperation(menuOption);	
 
 	}
+
 
 	public static void main(String[] args) {
 		FoodFirst p = new FoodFirst();
