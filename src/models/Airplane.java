@@ -12,7 +12,7 @@ public class Airplane {
 	int seatFirst;
 	int seatEconomy;
 	String reservedFlight="";
-	
+
 	List<String> seatLayout = new ArrayList<>();		
 	String status;
 	// Available, Fueled, Reserved, Take-off, Landed, 
@@ -48,13 +48,6 @@ public class Airplane {
 		else
 		{
 			seatLayout.set(index, "R");
-//			if (seatType.equals("AF")) {
-//				seatFirst--;
-//			}
-//			else
-//			{
-//				seatEconomy--;
-//			}
 			return ++index;
 		}
 	}
@@ -68,8 +61,6 @@ public class Airplane {
 			seatType="AF";
 		else
 			seatType="AE";
-		
-// 		int index = seatLayout.indexOf(seatType);
 		
 		if (seatLayout.get(seat-1).equals(seatType)){
 			seatLayout.set(seat-1, "R");
@@ -105,7 +96,31 @@ public class Airplane {
 			row++;
 		}
 	}
-
+	
+	public int getAvailableSeats() {
+		int available=0;
+		for (String nextSeat :  seatLayout) {
+			if (nextSeat.startsWith("A"))
+					available++;
+		}
+		return available;
+	}
+	
+	public int getAvailableSeats(String classSeat) {
+		int available=0;
+		String seatType;
+		if (classSeat.equalsIgnoreCase("FIRST"))
+			seatType="AF";
+		else
+			seatType="AE";
+		
+		for (String nextSeat :  seatLayout) {
+			if (nextSeat.startsWith(seatType))
+					available++;
+		}
+		return available;
+	}
+	
 	public String getAirplaneName() {
 		return airplaneName;
 	}
@@ -172,6 +187,4 @@ public class Airplane {
 		return "Airplane [airplaneName=" + airplaneName + ", seatFirst=" + seatFirst + ", seatEconomy=" + seatEconomy
 				+ ", reservedFlight=" + reservedFlight + ", status=" + status + "]";
 	}
-	
-	
 }
