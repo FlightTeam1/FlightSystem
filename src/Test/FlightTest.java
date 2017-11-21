@@ -1,8 +1,6 @@
 package Test;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,33 +21,32 @@ public class FlightTest {
 		Airplane newPlane = new Airplane("Airbus A380",5,5);
 		newPlane.fillTank();
 		newPlane.reserve("SK771");
-		
+
 		System.out.println(newPlane);
-		
+
 		newPlane.reserveFirstAvailableSeat("Economy");
 		newPlane.reserveFirstAvailableSeat("Economy");
 		newPlane.reserveFirstAvailableSeat("Economy");
 		newPlane.reserveFirstAvailableSeat("Economy");
-		
+
 		newPlane.reserveFirstAvailableSeat("First");
 		newPlane.reserveFirstAvailableSeat("First");
 		newPlane.reserveFirstAvailableSeat("First");
-		
+
 		newPlane.printSeating();
-		
-		Flight flight =  new Flight(newPlane,"SK775","Stockholm","New York",20000,5000,LocalDateTime.now());
-				
+
+		Flight flight =  new Flight(newPlane,"SK775","Stockholm","New York",20000,5000,LocalDateTime.now().plusHours(1));
+
 		FlightList list = new FlightList();
 		list.addFlight(flight);
 		list.addFlight(flight);
 		list.addFlight(flight);
 		list.addFlight(flight);
 		list.addFlight(flight);
-		
+
 		list.showDepartures();
-				
-
-		
+		System.out.println(flight.toString());
 	}
-
 }
+
+
