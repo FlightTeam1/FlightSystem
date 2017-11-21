@@ -1,3 +1,4 @@
+import java.util.Iterator;
 
 public class UI {
 	
@@ -29,17 +30,24 @@ public class UI {
 		return fixLengthString(startString, length);
 	}
 	
-	public void printAll(Reservation reservation , Customer customer) {
-	System.out.println(fixLengthString(customer.getId(),5)+ " |"+ fixLengthString(customer.getFirstName(),10) +"  |   "+
-			fixLengthString(customer.getsurtName(),10)+" | "+fixLengthString(customer.getEmail(),10) +"   | "+
-			fixLengthString(customer.getPhoneNo(),10) + "    | " +
-			fixLengthString(customer.getAddress(),10)+ "    | " +
-			fixLengthString("Male",6)+ "    |   " +
-			fixLengthString(reservation.getTicketID(),10)+ "      |        " +
-			fixLengthString(reservation.getTicketID(),10)+ "      |     " +			
-			fixLengthString(reservation.getTicketID(),10)
-			);
-	
+	public void printAll(Reservation reservation) {
+		Iterator<Customer> it = reservation.getList().iterator();
+		
+		while(it.hasNext()) {
+			Customer c = it.next();
+			System.out.println(c);
+		}
+		
+//	System.out.println(fixLengthString(customer.getId(),5)+ " |"+ fixLengthString(customer.getFirstName(),10) +"  |   "+
+//			fixLengthString(customer.getsurtName(),10)+" | "+fixLengthString(customer.getEmail(),10) +"   | "+
+//			fixLengthString(customer.getPhoneNo(),10) + "    | " +
+//			fixLengthString(customer.getAddress(),10)+ "    | " +
+//			fixLengthString("Male",6)+ "    |   " +
+//			fixLengthString(reservation.getTicketID(),10)+ "      |        " +
+//			fixLengthString(reservation.getTicketID(),10)+ "      |     " +			
+//			fixLengthString(reservation.getTicketID(),10)
+//			);
+		
 	}
 	
 	

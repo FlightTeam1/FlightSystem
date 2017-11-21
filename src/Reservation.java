@@ -4,17 +4,28 @@ import java.util.List;
 
 public class Reservation {
 	private List<Customer> list = new ArrayList<Customer>();
+	public List<Customer> getList() {
+		return list;
+	}
+
+
+	public void setList(List<Customer> list) {
+		this.list = list;
+	}
+
+	public void addCustomerToReservation(Customer customer) {
+		list.add(customer);
+	}
+	
 	private int ticketID;
-	private Customer customer;
 	//private Flight flight;
 	//private Food food;
 	private String bookingRef;
 	private double totalPrice;
 	
-	public Reservation(int ticketID, Customer customer, String bookingRef, double totalPrice) {
+	public Reservation(int ticketID, String bookingRef, double totalPrice) {
 		
 		this.ticketID = ticketID;
-		this.customer = customer;
 //		this.flight = flight;
 //		this.food = food;
 		this.bookingRef = bookingRef;
@@ -36,12 +47,24 @@ public class Reservation {
 		Customer customer = it.next();
 		
 		if(customer.getId()==customerID)
-		System.out.println(customer.getId());
 				it.remove();
 			}
 		}
 	
-
+//	public int findCustomer(int customerID) {
+//		Iterator<Customer> it = list.iterator();
+//		int id=0;
+//		while(it.hasNext()) {
+//		Customer customer = it.next();
+//		if(customer.getId()== customerID) {
+//			id += customer.getId();
+//		}
+//		
+//		
+//		}
+//		return id;
+//		
+//	}
 	
 	public double getTotalPrice() {
 
@@ -60,7 +83,7 @@ public class Reservation {
 	
 	public String toString() {
 		return "Cusotmer :" + ticketID + " totalPrice " +totalPrice +
-				"Booking Ref :" + bookingRef + " " + customer; 
+				"Booking Ref :" + bookingRef + " " + list; 
 	}
 	
 	
