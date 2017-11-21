@@ -81,4 +81,10 @@ public class Flight {
 	public String getOrigin() {
 		return origin;
 	}
+
+	@Override
+	public String toString() {
+		return "Flight [flightID=" + flightID + ", airplane=" + airplane;
+	}
+	
 }
