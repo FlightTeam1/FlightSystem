@@ -14,7 +14,6 @@ public class Flight {
 			LocalDate departureDate) {
 		super();
 		this.flightID = flightID++;
-		
 		this.airplane = airplane;
 		this.flightNo = flightNo;
 		this.destination = destination;

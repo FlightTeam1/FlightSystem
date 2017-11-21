@@ -1,37 +1,110 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import exceptions.ExceptionSeatIsOccupied;
+import exceptions.ExceptionSeatNotInRange;
 
 public class Airplane {
 	private static int airplaneId;
 	String airplaneName;
 	int seatFirst;
-	int setEconomy;
+	int seatEconomy;
 	String reservedFlight="";
 	
+	List<String> seatLayout = new ArrayList<>();		
 	String status;
 	// Available, Fueled, Reserved, Take-off, Landed, 
-	
-	public Airplane(String airplaneName, int seatFirst, int setEconomy) {
+
+	public Airplane(String airplaneName, int seatFirst, int seatEconomy) {
 		super();
 		this.airplaneName = airplaneName;
 		this.seatFirst = seatFirst;
-		this.setEconomy = setEconomy;
+		this.seatEconomy = seatEconomy;
 		this.status = "Available";
-		this.airplaneId =airplaneId; 
+		this.airplaneId =airplaneId;
+		
+		for (int i=0;i<(seatFirst+seatEconomy);i++) {
+			if (i<seatFirst)
+				seatLayout.add("AF");		// Available Firstclass
+			else
+				seatLayout.add("AE");		// Available Economy
+		}
 		airplaneId++;
 	}
 	
-	public String reserveSeatEco() {
-		return null;
+	public int reserveFirstAvailableSeat(String classSeat) throws ExceptionSeatIsOccupied {
+		String seatType;
+		if (classSeat.equalsIgnoreCase("FIRST"))
+			seatType="AF";
+		else
+			seatType="AE";
+		int index = seatLayout.indexOf(seatType);
+		
+		if (index==-1){
+			throw new ExceptionSeatIsOccupied();
+		}
+		else
+		{
+			seatLayout.set(index, "R");
+//			if (seatType.equals("AF")) {
+//				seatFirst--;
+//			}
+//			else
+//			{
+//				seatEconomy--;
+//			}
+			return ++index;
+		}
 	}
 	
-	public String reserveSeatFirst() {
-		return null;
+	public int reserveSpecificSeat(int seat, String classSeat) throws exceptions.ExceptionSeatNotInRange, ExceptionSeatIsOccupied {
+		String seatType;
+		System.out.println("Totalt:" + (seatEconomy + seatFirst));
+		if (seat <1 || seat >(seatEconomy + seatFirst)){
+			throw new ExceptionSeatNotInRange();
+		}
+		if (classSeat.equalsIgnoreCase("FIRST"))
+			seatType="AF";
+		else
+			seatType="AE";
+		
+// 		int index = seatLayout.indexOf(seatType);
+		
+		if (seatLayout.get(seat-1).equals(seatType)){
+			seatLayout.set(seat-1, "R");
+			return seat;
+		}
+		else
+		{
+			throw new ExceptionSeatIsOccupied();
+		}
+	}
+	public List<String> returnSeating(){
+		return seatLayout;
 	}
 	
-	private List<String> listAvailableSeats(){
-		return null;
+	public void printSeating() {
+		int row=1;
+		String out = "";
+		
+		for (String seat : seatLayout) {
+			System.out.print("Row " + row + ": Seat=");
+			switch (seat) {
+			case "R":
+				out ="Reserved";
+				break;
+
+			case "AF":
+				out = "Available Firstclass";
+				break;
+			case "AE":
+				out = "Available Economy";
+			}
+			System.out.println(out);
+			row++;
+		}
 	}
 
 	public String getAirplaneName() {
@@ -42,22 +115,6 @@ public class Airplane {
 		this.airplaneName = airplaneName;
 	}
 
-	public int getSeatFirst() {
-		return seatFirst;
-	}
-
-	public void setSeatFirst(int seatFirst) {
-		this.seatFirst = seatFirst;
-	}
-
-	public int getSetEconomy() {
-		return setEconomy;
-	}
-
-	public void setSetEconomy(int setEconomy) {
-		this.setEconomy = setEconomy;
-	}
-
 	public static int getairplaneId() {
 		return airplaneId;
 	}
@@ -65,20 +122,49 @@ public class Airplane {
 	public String getStatus() {
 		return status;
 	}
-	
+
 	public void fillTank() {
 		if (status.equals("Available"))
 			status="Fueled";
 	}
-	
+
 	public void unReserve(String flightID) {
 		if (status.equals("Reserved") )
 			reservedFlight="";
 	}
-	
+
 	public void reserve(String flightID) {
-		if (status.equals("Fueled") && reservedFlight =="")
+		if (status.equals("Fueled") && reservedFlight =="") {
 			status="Reserved";
 			reservedFlight=flightID;
+		}
+	}
+
+	public void takeOff(String flightID) {
+		if (status.equals("Reserved") && reservedFlight !="") {
+			status="Take-off";
+		}
+	}
+	
+	public void landed(String flightID) {
+		if (status.equals("Take-off") ) {
+			status="Landed";
+		}
+	}
+
+	public static int getAirplaneId() {
+		return airplaneId;
+	}
+
+	public int getSeatFirst() {
+		return seatFirst;
+	}
+
+	public int getSeatEconomy() {
+		return seatEconomy;
+	}
+
+	public String getReservedFlight() {
+		return reservedFlight;
 	}
 }
