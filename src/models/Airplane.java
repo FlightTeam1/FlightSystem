@@ -61,7 +61,6 @@ public class Airplane {
 	
 	public int reserveSpecificSeat(int seat, String classSeat) throws exceptions.ExceptionSeatNotInRange, ExceptionSeatIsOccupied {
 		String seatType;
-		System.out.println("Totalt:" + (seatEconomy + seatFirst));
 		if (seat <1 || seat >(seatEconomy + seatFirst)){
 			throw new ExceptionSeatNotInRange();
 		}
@@ -167,4 +166,12 @@ public class Airplane {
 	public String getReservedFlight() {
 		return reservedFlight;
 	}
+
+	@Override
+	public String toString() {
+		return "Airplane [airplaneName=" + airplaneName + ", seatFirst=" + seatFirst + ", seatEconomy=" + seatEconomy
+				+ ", reservedFlight=" + reservedFlight + ", status=" + status + "]";
+	}
+	
+	
 }

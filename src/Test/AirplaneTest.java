@@ -15,28 +15,18 @@ public class AirplaneTest {
 	public void setUp() throws Exception {
 	}
 
-	//	@Test
-	//	public void testReserveSeatFirst() {
-	//		Airplane testPlane  = new Airplane("Airbus 380",5,5);
-	//		System.out.println("Seat:" + testPlane.getSeatEconomy());
-	//		System.out.println("SeatFirst:" + testPlane.getSeatFirst());
-	//		
-	//		System.out.println(testPlane.getAirplaneName() + " " +  testPlane.getStatus()+ " " + testPlane.getairplaneId());
-	//
-	//		assertTrue(testPlane.getSeatFirst()==5);
-	//	}
-	//
-	//	@Test
-	//	public void testReserveFirstAvailableSeat() throws ExceptionSeatIsOccupied {
-	//		Airplane testPlane  = new Airplane("Airbus 380",5,5);
-	//
-	//		int seat = testPlane.reserveFirstAvailableSeat("first");
-	//		System.out.println("Seat First:" + seat);
-	//
-	//		seat = testPlane.reserveFirstAvailableSeat("eco");
-	//		System.out.println("Seat Eco:" + seat);
-	//	}
-	//
+
+//	@Test
+//	public void testReserveFirstAvailableSeat() throws ExceptionSeatIsOccupied {
+//		Airplane testPlane  = new Airplane("Airbus 380",5,5);
+//	
+//		int seat = testPlane.reserveFirstAvailableSeat("first");
+//		System.out.println("Seat First:" + seat);
+//	
+//		seat = testPlane.reserveFirstAvailableSeat("eco");
+//		System.out.println("Seat Eco:" + seat);
+//	}
+	
 	//	@Test(expected = ExceptionSeatIsOccupied.class)
 	//	public void bookMoreSeatsThanAvailable() throws ExceptionSeatIsOccupied, ExceptionSeatNotInRange {
 	//
@@ -94,7 +84,13 @@ public class AirplaneTest {
 		System.out.println("Economy Seat no:" + x);
 		
 		testPlane.printSeating();
+		
+		x= testPlane.reserveFirstAvailableSeat("Economy");
+		System.out.println("Economy Seat no:" + x);
+		
+		
 
 		
 	}
-}
+	
+	}

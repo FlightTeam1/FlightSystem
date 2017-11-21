@@ -1,21 +1,25 @@
 package models;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Flight {
 	private int flightID;
 	private Airplane airplane = new Airplane("Airbus 380",5,5);
 	private String flightNo;
+	private String origin;
 	private String destination;
 	private int priceFirst=20000;
 	private int priceEconomy =5000;
-	private LocalDate departureDate;
+	private LocalDateTime departureDate;
+	
 
-	public Flight(Airplane airplane, String flightNo, String destination, int priceFirst, int priceEconomy,
-			LocalDate departureDate) {
+	public Flight(Airplane airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
+			LocalDateTime departureDate) {
 		super();
 		this.flightID = flightID++;
 		this.airplane = airplane;
 		this.flightNo = flightNo;
+		this.origin = origin;
 		this.destination = destination;
 		this.priceFirst = priceFirst;
 		this.priceEconomy = priceEconomy;
@@ -66,11 +70,15 @@ public class Flight {
 		this.priceEconomy = priceEconomy;
 	}
 
-	public LocalDate getDepartureDate() {
+	public LocalDateTime getDepartureDate() {
 		return departureDate;
 	}
 
-	public void setDepartureDate(LocalDate departureDate) {
+	public void setDepartureDate(LocalDateTime departureDate) {
 		this.departureDate = departureDate;
+	}
+
+	public String getOrigin() {
+		return origin;
 	}
 }
