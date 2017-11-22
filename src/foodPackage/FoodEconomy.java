@@ -11,7 +11,7 @@ public class FoodEconomy  {
 	private double itemPrice;
 	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
-		
+
 	public List<FoodItem> itemsList = new ArrayList<FoodItem>();
 	public List<Food> menuItems = new ArrayList<>();
 
@@ -156,14 +156,14 @@ public class FoodEconomy  {
 		System.out.println("Thank You\n");
 		System.out.println("Enjoy your meal in flight ");
 	}
-	
-	
-		
+
+
+
 
 
 
 	public static void main(String[] args) {
-	
+
 		FoodEconomy p = new FoodEconomy();
 		p.getFood();
 
