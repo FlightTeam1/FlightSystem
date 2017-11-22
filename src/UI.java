@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+
+import java.util.Scanner;
 
 public class UI {
-
+	ReservationList newList = new ReservationList();
   
 	public void printHeader() {
 		
@@ -38,6 +37,106 @@ public class UI {
 		return fixLengthString(startString, length);
 	}
 	
+	
+//	public void run() {
+//			
+//			System.out.println("please choose option");
+//			Scanner sc = new Scanner(System.in);
+//			String t = sc.next();
+//			boolean newAction = true;
+//	
+////			String menuButton =t;
+////			while (newAction) {
+//				switch (t) {
+//				case "p":
+//					// to read the list
+//					newList.printAll();
+//					break;
+//				case "a":
+//					// add
+//					addEvent(sc);
+//					break;
+//				case "d":
+//					// delete by id
+//					newList.cancelTicket(1);
+//					break;
+//			
+//					
+//				
+//				default:
+//					// read again
+//					break;
+//				}
+//
+//				sc.close();
+//			}
+//			
+////	}
+//
+//		private void toPrintMenu() {
+//			System.out.println ("MENU:");
+//			
+//			
+//			System.out.println ("<P> - to print the list");
+//		
+//			
+//			System.out.println ("<A> - to add an item");
+//			System.out.println ("<D> - to deleate an item");			
+//		
+//		
+//		}
+//
+//		public void addEvent(Scanner sc) {
+//
+//
+//			System.out.println("input firsname sur name email:");
+//			String fn = getText(sc);
+//			String sn = getText(sc);
+//			String em = getText(sc);
+//			
+//			
+//			newList.addList(new Reservation(1, fn,sn, em,"12338843" ,"1 hight street" ,Gender.MALE,123,"abc123",1212.23));
+//		}
+//		
+//	
+//		
+//
+//		private String getText(Scanner sc) {
+//
+//			String text = "";
+//			while (text.length() == 0) {
+//				try {
+//					if (sc.hasNextLine()) {
+//						text = sc.nextLine();
+//					}
+//				} catch (Exception e) {
+//				} // any exception
+//			}
+//
+//			return text;
+//		}
+//
+//		
+//		public int getNumber(Scanner sc) {
+//
+//			int id = 0;
+//			while (id == 0) {
+//				try {				
+//					 if (sc.hasNextLine()) {
+//						   id = Integer.parseInt(sc.nextLine());						
+//					}
+//				} catch (Exception e) {
+//				} // any exception
+//
+//			}
+//			return id;
+//		}
+//	
+//
+//	
+//	
+//	
+//	
 	
 		
 //	public void printAll(Reservation reservation) {
