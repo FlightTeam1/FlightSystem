@@ -16,12 +16,10 @@ public class Customer {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
-		
 	}
 
 	public int getId() {
 		return customerID;
-		
 	}
 	
 	public String getFirstName() {

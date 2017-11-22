@@ -40,6 +40,10 @@ public class FlightList {
 		return listOfFlights;
 	}
 	
+	public void cancelAllFlights() {
+		listOfFlights.clear();
+	}
+	
 	public void showDepartures() {
 		LocalDateTime date = LocalDateTime.now();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -69,7 +73,9 @@ public class FlightList {
 	
 	public void loadXMLData() {
 		try {
-			Airplane justOneAirplane = new Airplane("SAS Boeing A380" , 5 , 5);
+			//Airplane somePlane = new A380();
+			 
+			CommercialFlight justOneAirplane = new A380();
 
 			File fXmlFile = new File("Depatures.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

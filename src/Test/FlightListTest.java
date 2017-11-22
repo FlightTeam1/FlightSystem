@@ -19,7 +19,7 @@ public class FlightListTest {
 	@Test
 	public void testLoadXMLData() {
 		FlightList list = new FlightList();
-		// list.loadXMLData();
+		// list.loadXMLData();	XML loaded automatically when instanciate the FlightList object
 		int records=0;
 		
 		Iterator<Flight> iterator = list.listFlights().iterator();
@@ -38,19 +38,18 @@ public class FlightListTest {
 		FlightList list = new FlightList();
 		list.showDepartures();
 	}
-//
-//	@Test
-//	public void testAddFlight() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testListFlights() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testShowDepartures() {
-//		fail("Not yet implemented");
-//	}
+	
+	@Test
+	public void checkNumberOfFlights() {
+		FlightList list = new FlightList();
+		int count1=list.listFlights().size();
+		list.cancelAllFlights();
+		int count2=list.listFlights().size();
+		
+		// System.out.println(count1);	Check full listing compared
+		// System.out.println(count2);	with an empty list
+		
+		assertTrue((count1-49) == count2);
+		//cancelAllFlights
+	}
 }
