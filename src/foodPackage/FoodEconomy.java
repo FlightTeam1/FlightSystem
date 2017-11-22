@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class FoodEconomy  {
-	//TODO implements Food
+public class FoodEconomy implements Food  {
+
 
 	public  double totalPrice;
 	private double itemPrice;
@@ -58,7 +58,7 @@ public class FoodEconomy  {
 				break;
 			case 3:
 				exit();
-				break;      
+				return;      
 			default:
 				System.out.println("Invalid option.");
 				getFood();
