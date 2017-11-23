@@ -177,8 +177,9 @@ public class FlightList {
 					date= date.plusDays(extraDays);
 					date= date.plusHours(extraHours);
 
-					Flight loadFlight = new Flight (justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
-										
+					// Flight loadFlight = new Flight (justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
+					Flight loadFlight = new Flight(justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
+					
 					listOfFlights.add(loadFlight);
 					
 					// System.out.println(listOfFlights.size());

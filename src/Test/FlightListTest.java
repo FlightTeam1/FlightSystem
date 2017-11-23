@@ -82,11 +82,11 @@ public class FlightListTest {
 		List newList = new ArrayList<>();
 	}
 
-//	@Test
-	public void testExtractedList2() {
+	@Test
+//	public void testExtractedList2() {
 		LocalDate day = LocalDate.now().plusDays(2);
 		FlightList list = new FlightList();
-		list.showDepartures(day);
+		list.showDepartures();
 		
 		System.out.print(list.getFlightById(1).getAirplane().getAirplaneName() +  "   ");
 		System.out.print(list.getFlightById(1).getDestination() +  "   ");

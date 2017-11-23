@@ -19,16 +19,11 @@ public class Flight {
 	private int priceEconomy =5000;
 	private LocalDateTime departureDate;
 
-	
-	public Flight() {
-		super();
-	}
-
-	public Flight(String airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
+	public Flight(CommercialFlight justOneAirplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
 			LocalDateTime departureDate) {
 		
-		this.flightID = flightID++;
-		this.airplane = airplane;
+		// this.flightID = flightID++;
+		this.airplane = justOneAirplane;
 		this.flightNo = flightNo;
 		this.origin = origin;
 		this.destination = destination;
@@ -105,7 +100,7 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return flightID + "         " + 
+		return flightId + "         " + 
 				airplane+ "        " + 
 				origin + "         " + 
 				destination ;
