@@ -14,7 +14,7 @@ import models.FlightList;
 
 public class FlightListTest {
 	
-	FlightList list;
+	// FlightList list;
 	Flight flight;
 
 //	@Before
@@ -77,13 +77,14 @@ public class FlightListTest {
 	
 //	@Test
 	public void testExtractedList() {
+		FlightList list = new FlightList();
 		LocalDate today = LocalDate.now();
 		list.showDepartures(today);
 		List newList = new ArrayList<>();
 	}
 
 	@Test
-//	public void testExtractedList2() {
+	public void testExtractedList2() {
 		LocalDate day = LocalDate.now().plusDays(2);
 		FlightList list = new FlightList();
 		list.showDepartures();
