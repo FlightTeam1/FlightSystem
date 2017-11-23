@@ -2,6 +2,8 @@ package models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import bookingTicket.Customer;
+
 public class Flight {
 	
 	private CommercialFlight airplane = new A380();
@@ -17,10 +19,15 @@ public class Flight {
 	private int priceEconomy =5000;
 	private LocalDateTime departureDate;
 
-	public Flight(CommercialFlight airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
-			LocalDateTime departureDate) {
+	
+	public Flight() {
 		super();
+	}
+
+	public Flight(String airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
+			LocalDateTime departureDate) {
 		
+		this.flightID = flightID++;
 		this.airplane = airplane;
 		this.flightNo = flightNo;
 		this.origin = origin;
@@ -98,6 +105,9 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [flightID=" + flightId + ", airplane=" + airplane;
+		return flightID + "         " + 
+				airplane+ "        " + 
+				origin + "         " + 
+				destination ;
 	}
 }
