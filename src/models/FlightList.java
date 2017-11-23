@@ -27,6 +27,7 @@ public class FlightList {
 	private static int FIXED_ECONOMY_PRICE=5000;
 	
 	List<Flight> listOfFlights = new ArrayList<>();
+	List<Flight> listOfLastResult = new ArrayList<>();
 	
 	public FlightList() {
 		loadXMLData();
@@ -46,6 +47,8 @@ public class FlightList {
 				listOfFlights.stream().
 				filter(p -> p.getFlightNo().equalsIgnoreCase(flightCode)).
 				  collect(Collectors.toList());
+		listOfLastResult=exportOneFlight;
+		
 		return exportOneFlight;
 	}
 	
@@ -55,11 +58,18 @@ public class FlightList {
 				filter(p -> p.getDepartureDate().toLocalDate().equals(date)).
 				  collect(Collectors.toList());
 		// System.out.println(exportOneFlight.size());
+		listOfLastResult=exportOneFlight;
 		return exportOneFlight;
 	}
 	
 	public Flight getFlightById(int id) {
-		return listOfFlights.get(id);
+		if (id<=0 || id>=listOfLastResult.size()) {
+			return null;
+		}
+		else
+		{
+			return listOfLastResult.get(id-1);
+		}
 	}
 	
 	public void cancelAllFlights() {
@@ -68,6 +78,7 @@ public class FlightList {
 	
 	public void showDepartures() {
 		Collections.sort(listOfFlights, new FlightComparator());
+		listOfLastResult =listOfFlights;
 		printDepartures(listOfFlights);
 	    
 	}
@@ -79,9 +90,7 @@ public class FlightList {
 				listOfFlights.stream().
 				filter(p -> p.getDepartureDate().toLocalDate().equals(now)).
 				  collect(Collectors.toList());
-		// System.out.println(exportOneFlight.size());
-		
-		// flightList = list.listFlightsSpecificDate(date);
+		listOfLastResult =exportOneFlight;
 		printDepartures(exportOneFlight);
 	}
 	
@@ -90,8 +99,8 @@ public class FlightList {
 				listOfFlights.stream().
 				filter(p -> p.getDepartureDate().toLocalDate().equals(date)).
 				  collect(Collectors.toList());
-		// System.out.println(exportOneFlight.size());
-		// flightList = list.listFlightsSpecificDate(date);
+
+		listOfLastResult =exportOneFlight;
 		printDepartures(exportOneFlight);
 	}
 		
