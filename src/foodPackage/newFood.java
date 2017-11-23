@@ -1,12 +1,14 @@
 package foodPackage;
 
-public interface Food {
+import java.util.List;
+
+public interface newFood {
 	public void foodMenu();
-	public double itemPrice(int foodItem, double itemPrice);
+	public String foodName="";
+	public double itemPrice(int foodItem);
 	public double quantity();
 	public double calculatePrice(double quantity, double itemPrice);
 	public void exit();
-	//Food[] listFood = new Food[3];
 	
-
+	List<newMenu> returnMenu();
 }

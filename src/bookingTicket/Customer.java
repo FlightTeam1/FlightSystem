@@ -15,7 +15,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, String gender) {
+	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, Gender gender) {
 		
 		this.customerID = customerID;
 		this.firstName = firstName;
@@ -24,12 +24,10 @@ public class Customer {
 		this.phone = phone;
 		this.address = address;
 		this.gender = gender;
-		
 	}
 
 	public int getId() {
 		return customerID;
-		
 	}
 	
 	public String getFirstName() {

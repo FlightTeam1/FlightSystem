@@ -5,9 +5,13 @@ import java.time.LocalDateTime;
 import bookingTicket.Customer;
 
 public class Flight {
-	private static int flightID=0;
-	//private Airplane airplane = new Airplane("Airbus 380",5,5);
-	private String airplane;
+	
+	private CommercialFlight airplane = new A380();
+	
+	//Airplane("Airbus 380",5,5);
+	
+	private static int counter = 0;
+	private int flightId;
 	private String flightNo;
 	private String origin;
 	private String destination;
@@ -31,23 +35,32 @@ public class Flight {
 		this.priceFirst = priceFirst;
 		this.priceEconomy = priceEconomy;
 		this.departureDate = departureDate;
-		
+		this.flightId = Flight.counter;
+		counter++;
+	}
+	
+	public int getCounter() {
+		return counter;
 	}
 
 	public int getFlightID() {
-		return flightID;
+		return flightId;
 	}
 
-	public String getAirplane() {
+	public CommercialFlight getAirplane() {
 		return airplane;
 	}
 
-	public void setAirplane(String airplane) {
+	public void setAirplane(CommercialFlight airplane) {
 		this.airplane = airplane;
 	}
 
 	public String getFlightNo() {
 		return flightNo;
+	}
+	
+	public void setFlightId(int id) {
+		this.flightId = id;
 	}
 
 	public void setFlightNo(String flightNo) {
@@ -97,5 +110,4 @@ public class Flight {
 				origin + "         " + 
 				destination ;
 	}
-	
 }

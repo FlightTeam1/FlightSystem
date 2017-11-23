@@ -1,4 +1,10 @@
 /bookingTicket/
 /ui/
 /models/
+<<<<<<< HEAD
 /Test/
+=======
+/foodPackage/
+/comparator/
+/threads/
+>>>>>>> 32c2d79a6c3b7ae082dd25dd8b6e3dff8ae72612
