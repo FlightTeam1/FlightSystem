@@ -1,4 +1,6 @@
 package foodPackage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 public class FoodFirst implements Food {
 
@@ -6,54 +8,65 @@ public class FoodFirst implements Food {
 	private double itemPrice;
 	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
+	public List<FoodItem> itemsList = new ArrayList<FoodItem>();
+
+
+	public static void main(String[] args) {
+		FoodFirst p = new FoodFirst();
+		p.getFood();
+
+
+	}
 
 	public void getFood() {	
 
 		System.out.println("**First Class Menu service** \n");		
-		System.out.println(" Welcome Aboard Lexicon Airlines \n ");
-		System.out.println("********************\n");
-		System.out.println(" All our meals are served with freshly baked bread and butter");
-		System.out.println(" Enjoy with our complimentary Champagne,fine wine, spirits, beer, cocktails and soft drinks.\n");
-		System.out.println("********************\n");
 
+		Messages msg = new Messages();
+		System.out.println("**Economy Class Menu service** \n");
+		System.out.println(msg.getStaticMenuInfo());
 		int menuOption = 0;
-		executeOperation(menuOption);	
+		executeOperation(menuOption);
+
 
 	}
 
 
+	public void getList()
+	{
+		System.out.println("Select your choice of items \n");
+		System.out.println("1. Select Items from the menu \n" );
+		System.out.println("2. Print the list Menu\n ");      
+		System.out.println("3. Exit \n");
+		System.out.println("********************\n");
+	}
+
+
 	public void executeOperation(int menuOption) {
-		int foodItem = 0;
+		int foodId = 0;
 		input = new Scanner(System.in); 
 		do{
-
-			foodMenu();
+			getList();
 			menuOption = input.nextInt();    
-
 			switch(menuOption){
-			case 1:
-				foodItem = 1;
-				itemPrice(foodItem);
-				break;
+			case 1: 
+				addItem();
+				break;          
 			case 2:
-				foodItem = 2;
-				itemPrice(foodItem);
+				getAllItems();
 				break;
 			case 3:
-				foodItem = 3;
-				itemPrice(foodItem);
-				break;
-			case 4:
 				exit();
 				break;      
 			default:
 				System.out.println("Invalid option.");
 				getFood();
-
-			}	
+			}   
 		} while(order); {
 		}
 	}
+
+
 
 
 	public void foodMenu() {
@@ -68,32 +81,43 @@ public class FoodFirst implements Food {
 	}
 
 
-	public double itemPrice(int foodItem) {
-		if (foodItem == 1) {
-			//burger= $2.00
+	public void addItem() {
+		Scanner scanner = new Scanner(System.in);
+		foodMenu();
+		System.out.println("Enter Index number u wish to add:\n");
+		int foodId = scanner.nextInt(); 
+		double quantity = quantity();
+		itemPrice(foodId,quantity);
+	}
+
+
+	public double itemPrice(int foodId,double quantity) {
+		if (foodId == 1) {
+
 			System.out.println("You've ordered Crispy fried chicken with Potato smash and Vanilla Fruit icecream \n");
-			itemPrice = 2.00;
+			itemPrice = 50.00;
+			itemsList.add(new FoodItem(foodId,"Crispy fried chicken with Potato smash and Vanilla Fruit icecream",itemPrice,quantity));
 		}
-		if (foodItem == 2) {
-			//fries = $1.50
-			System.out.println("You've ordered Steam Fish Fillet with Garlic sauce and Strawberry smoothie \n ");
-			itemPrice = 1.50;
+		if (foodId == 2) {
+			System.out.println("You've ordered Beef Burrito with Lemon Tart");
+			itemPrice = 90.50;
+			itemsList.add(new FoodItem(foodId,"Beef Burrito with Lemon Tart",itemPrice,quantity));
 		}
-		if (foodItem == 3) {
-			//soda = $1.00
-			System.out.println("You've ordered Beef Burrito with Lemon Tart \n");
-			itemPrice = 1.00;
+		if (foodId == 3) {      
+			System.out.println("You've ordered Steam Fish Fillet with Garlic sauce and Strawberry smoothie ");
+			itemPrice = 75.00;
+			itemsList.add(new FoodItem(foodId,"Steam Fish Fillet with Garlic sauce and Strawberry smoothie",itemPrice,quantity));
 		}
-		quantity();
+
 		System.out.println("\nDo you want to add one more food Item (Yes/No):\n");
 		String oneMore = input.next();
 		if("yes".equalsIgnoreCase(oneMore.toLowerCase())) {
-			executeOperation(foodItem);
+			addItem();
 		} else {
-			exit();
-		} 	
+			System.out.println("TotalPrice for food " +totalPrice);
+			executeOperation(foodId);
+		}   
 		return itemPrice;
-
 	}
 
 
@@ -103,31 +127,41 @@ public class FoodFirst implements Food {
 		calculatePrice(quantity, itemPrice);
 		return quantity;
 
-	}
+	}	
 
 
 	public double calculatePrice(double quantity, double itemPrice) {
 		double calculatePrice = quantity*itemPrice;
-		System.out.println("Price: "+ calculatePrice);
+		System.out.println("Subtotal: "+ calculatePrice);
 		totalPrice += calculatePrice;
 		return calculatePrice;
 	}
 
 
+	public void getAllItems() { 
+		if(itemsList!=null && !itemsList.isEmpty()){
+			for (FoodItem item : itemsList){
+				if(item!=null){
+					System.out.println("\n FoodList:" + item.getFoodId() +
+							"\n ItemName: "+item.getFoodName()+ 
+							"\n Sub Total: "+item.getPrice() * item.getQuantity());
+					System.out.println("********************\n");
+				}
+			}
+			System.out.println("TotalPrice for food " +totalPrice);
+		} else {
+			System.out.println("No Data Found");
+		}               
+	}   
+
+
 	public void exit(){
 		order = false;
-		System.out.println("Total Price for food " +totalPrice);
+		System.out.println("Thank You\n");
 		System.out.println("Enjoy your meal in flight ");
-
 	}
 
 
-	public static void main(String[] args) {
-		FoodFirst p = new FoodFirst();
-		p.getFood();
-
-
-	}
 }
 
 

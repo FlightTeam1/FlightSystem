@@ -8,6 +8,10 @@ public class Customer {
 	private String phone;
 	private String address;
 	private Gender gender;
+	
+	public Customer() {
+		super();
+	}
 	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, Gender gender) {
 		
 		this.customerID = customerID;

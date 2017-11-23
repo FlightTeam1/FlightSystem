@@ -1,35 +1,51 @@
+import java.util.Scanner;
 
 public class main {
-
+	
 	public static void main(String[] args) {
+	
+		UI ui = new UI();	
+//		ui.run();
+		ReservationList newList = new ReservationList();
+//		Customer customer = new Customer(1," MAttias", "abbasi" ,"abc@yahoo.com" , "2343434" , "10 hight Street" ,Gender.MALE);
+//		Customer customer2 = new Customer(2," khalid", "abbasi" ,"abc@yahoo.com" , "2343434" , "10 hight Street" ,Gender.MALE);
 		
-		Customer customer = new Customer(1," MAttias", "abbasi" ,"abc@yahoo.com" , "2343434" , "10 hight Street" ,Gender.MALE);
-		Customer customer2 = new Customer(2," khalid", "abbasi" ,"abc@yahoo.com" , "2343434" , "10 hight Street" ,Gender.MALE);
 		
-		Reservation reservation = new Reservation(123232, "this is referecen", 121);
-		reservation.addCustomerToReservation(customer);
+		newList.printAll();
+		newList.cancelTicket(124);
+		System.out.println("After REmove ~~~~~~~~~~~~~~~~");
+		newList.printAll();
 		
-		
-		
-		//System.out.println(reserve.printTicket(reserve))
-		
-		UI ui = new UI();
-		ui.printHeader();
-		ui.printAll(reservation);
-//		System.out.println(reservation.bookTicket(customer));
-		
-		reservation.cancelTicket(1);
-		
-		System.out.println("*****************AFTER REMOVE***************");
-		
-		ui.printAll(reservation);
-		
+//		ui.printHeader();
+//		ui.printAll();
+////		System.out.println(reservation.bookTicket(customer));
+//		
+//		//reservation.cancelTicket(2);
+//		
+//		System.out.println("*****************AFTER REMOVE***************");
+//		
+//		();
+//		
 		
 		
 		
 
 	}
 	
+	public String getText(Scanner sc) {
+
+		String text = "";
+		while (text.length() == 0) {
+			try {
+				if (sc.hasNextLine()) {
+					text = sc.nextLine();
+				}
+			} catch (Exception e) {
+			} // any exception
+		}
+
+		return text;
+	}
 	
 
 }
