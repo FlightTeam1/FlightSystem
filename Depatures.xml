@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List>
+<Depatures>
+<Time>08:30</Time>
+<Destination>Hamburg </Destination>
+<Flight>SK26455</Flight>
+</Depatures>
+<Depatures>
+<Time>08:35</Time>
+<Destination>Oslo </Destination>
+<Flight>SK8475</Flight>
+</Depatures>
+<Depatures>
+<Time>08:40</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7045</Flight>
+</Depatures>
+<Depatures>
+<Time>08:40</Time>
+<Destination>Vilnius </Destination>
+<Flight>SK7385</Flight>
+</Depatures>
+<Depatures>
+<Time>09:05</Time>
+<Destination>Frankfurt </Destination>
+<Flight>SK6355</Flight>
+</Depatures>
+<Depatures>
+<Time>09:20</Time>
+<Destination>Oslo </Destination>
+<Flight>SK4835</Flight>
+</Depatures>
+<Depatures>
+<Time>09:50</Time>
+<Destination>Dublin </Destination>
+<Flight>SK5355</Flight>
+</Depatures>
+<Depatures>
+<Time>09:55</Time>
+<Destination>Stavanger </Destination>
+<Flight>SK14955</Flight>
+</Depatures>
+<Depatures>
+<Time>10:00</Time>
+<Destination>Tammerfors </Destination>
+<Flight>SK42425</Flight>
+</Depatures>
+<Depatures>
+<Time>11:00</Time>
+<Destination>Oslo </Destination>
+<Flight>SK8495</Flight>
+</Depatures>
+<Depatures>
+<Time>11:20</Time>
+<Destination>Stuttgart </Destination>
+<Flight>SK16335</Flight>
+</Depatures>
+<Depatures>
+<Time>11:35</Time>
+<Destination>Kiruna </Destination>
+<Flight>SK10424</Flight>
+</Depatures>
+<Depatures>
+<Time>11:55</Time>
+<Destination>Prag </Destination>
+<Flight>SK17675</Flight>
+</Depatures>
+<Depatures>
+<Time>12:15</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7085</Flight>
+</Depatures>
+<Depatures>
+<Time>12:35</Time>
+<Destination>Bergen </Destination>
+<Flight>SK8995</Flight>
+</Depatures>
+<Depatures>
+<Time>13:00</Time>
+<Destination>München </Destination>
+<Flight>SK26595</Flight>
+</Depatures>
+<Depatures>
+<Time>13:20</Time>
+<Destination>Oslo </Destination>
+<Flight>SK4955</Flight>
+</Depatures>
+<Depatures>
+<Time>14:15</Time>
+<Destination>Tammerfors </Destination>
+<Flight>SK42445</Flight>
+</Depatures>
+<Depatures>
+<Time>14:20</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7125</Flight>
+</Depatures>
+<Depatures>
+<Time>14:20</Time>
+<Destination>Vasa </Destination>
+<Flight>SK42245</Flight>
+</Depatures>
+<Depatures>
+<Time>14:25</Time>
+<Destination>Kalmar </Destination>
+<Flight>SK1954</Flight>
+</Depatures>
+<Depatures>
+<Time>14:55</Time>
+<Destination>Visby </Destination>
+<Flight>SK0814</Flight>
+</Depatures>
+<Depatures>
+<Time>15:00</Time>
+<Destination>Sundsvall </Destination>
+<Flight>SK0524</Flight>
+</Depatures>
+<Depatures>
+<Time>15:10</Time>
+<Destination>Bryssel </Destination>
+<Flight>SK15895</Flight>
+</Depatures>
+<Depatures>
+<Time>15:20</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7165</Flight>
+</Depatures>
+<Depatures>
+<Time>15:30</Time>
+<Destination>Chicago </Destination>
+<Flight>SK9455</Flight>
+</Depatures>
+<Depatures>
+<Time>15:40</Time>
+<Destination>Oslo </Destination>
+<Flight>SK4915</Flight>
+</Depatures>
+<Depatures>
+<Time>16:00</Time>
+<Destination>Riga </Destination>
+<Flight>SK17645</Flight>
+</Depatures>
+<Depatures>
+<Time>16:10</Time>
+<Destination>Amsterdam </Destination>
+<Flight>SK15555</Flight>
+</Depatures>
+<Depatures>
+<Time>16:15</Time>
+<Destination>Zürich </Destination>
+<Flight>SK16055</Flight>
+</Depatures>
+<Depatures>
+<Time>16:20</Time>
+<Destination>Manchester </Destination>
+<Flight>SK25495</Flight>
+</Depatures>
+<Depatures>
+<Time>16:35</Time>
+<Destination>Oslo </Destination>
+<Flight>SK4995</Flight>
+</Depatures>
+<Depatures>
+<Time>16:45</Time>
+<Destination>Billund </Destination>
+<Flight>SK14975</Flight>
+</Depatures>
+<Depatures>
+<Time>16:50</Time>
+<Destination>Hamburg </Destination>
+<Flight>SK26475</Flight>
+</Depatures>
+<Depatures>
+<Time>17:35</Time>
+<Destination>Oslo </Destination>
+<Flight>SK8855</Flight>
+</Depatures>
+<Depatures>
+<Time>17:45</Time>
+<Destination>Bryssel </Destination>
+<Flight>SK25915</Flight>
+</Depatures>
+<Depatures>
+<Time>17:45</Time>
+<Destination>Sundsvall </Destination>
+<Flight>SK0544</Flight>
+</Depatures>
+<Depatures>
+<Time>17:50</Time>
+<Destination>Visby </Destination>
+<Flight>SK0834</Flight>
+</Depatures>
+<Depatures>
+<Time>17:55</Time>
+<Destination>Kalmar </Destination>
+<Flight>SK1974</Flight>
+</Depatures>
+<Depatures>
+<Time>18:20</Time>
+<Destination>Åbo </Destination>
+<Flight>SK42365</Flight>
+</Depatures>
+<Depatures>
+<Time>18:35</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7225</Flight>
+</Depatures>
+<Depatures>
+<Time>18:50</Time>
+<Destination>Oslo </Destination>
+<Flight>SK4935</Flight>
+</Depatures>
+<Depatures>
+<Time>19:25</Time>
+<Destination>Oslo </Destination>
+<Flight>SK8835</Flight>
+</Depatures>
+<Depatures>
+<Time>19:50</Time>
+<Destination>Oslo </Destination>
+<Flight>SK14835</Flight>
+</Depatures>
+<Depatures>
+<Time>20:00</Time>
+<Destination>Riga </Destination>
+<Flight>SK17465</Flight>
+</Depatures>
+<Depatures>
+<Time>20:40</Time>
+<Destination>Helsingfors </Destination>
+<Flight>SK7245</Flight>
+</Depatures>
+<Depatures>
+<Time>20:40</Time>
+<Destination>Trondheim </Destination>
+<Flight>SK24755</Flight>
+</Depatures>
+<Depatures>
+<Time>20:40</Time>
+<Destination>Vilnius </Destination>
+<Flight>SK17405</Flight>
+</Depatures>
+<Depatures>
+<Time>20:45</Time>
+<Destination>Tallinn </Destination>
+<Flight>SK17725</Flight>
+</Depatures>
+</List>
