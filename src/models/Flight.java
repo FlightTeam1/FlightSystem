@@ -4,16 +4,18 @@ import java.time.LocalDateTime;
 
 public class Flight {
 	private int flightID;
-	private Airplane airplane = new Airplane("Airbus 380",5,5);
+	private CommercialFlight airplane = new A380();
+	
+	//Airplane("Airbus 380",5,5);
+			
 	private String flightNo;
 	private String origin;
 	private String destination;
 	private int priceFirst=20000;
 	private int priceEconomy =5000;
 	private LocalDateTime departureDate;
-	
 
-	public Flight(Airplane airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
+	public Flight(CommercialFlight airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
 			LocalDateTime departureDate) {
 		super();
 		this.flightID = flightID++;
@@ -30,11 +32,11 @@ public class Flight {
 		return flightID;
 	}
 
-	public Airplane getAirplane() {
+	public CommercialFlight getAirplane() {
 		return airplane;
 	}
 
-	public void setAirplane(Airplane airplane) {
+	public void setAirplane(CommercialFlight airplane) {
 		this.airplane = airplane;
 	}
 
@@ -86,5 +88,4 @@ public class Flight {
 	public String toString() {
 		return "Flight [flightID=" + flightID + ", airplane=" + airplane;
 	}
-	
 }

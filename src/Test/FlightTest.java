@@ -1,12 +1,16 @@
 package Test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.time.LocalDateTime;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import exceptions.ExceptionSeatIsOccupied;
+import models.A380;
 import models.Airplane;
+import models.CommercialFlight;
 import models.Flight;
 import models.FlightList;
 
@@ -18,7 +22,10 @@ public class FlightTest {
 
 	@Test
 	public void test() throws ExceptionSeatIsOccupied {
-		Airplane newPlane = new Airplane("Airbus A380",5,5);
+		CommercialFlight newPlane = new A380();
+		
+		// Airplane("Airbus A380",5,5);
+		
 		newPlane.fillTank();
 		newPlane.reserve("SK771");
 
@@ -44,8 +51,13 @@ public class FlightTest {
 		list.addFlight(flight);
 		list.addFlight(flight);
 
-		list.showDepartures();
-		System.out.println(flight.toString());
+		System.out.println(list.listFlights().size());
+		// list.showDepartures();
+		// System.out.println(flight.toString());
+		
+		assertTrue(list.listFlights().size()==54);
+		// list.showDepartures();
+		
 	}
 }
 
