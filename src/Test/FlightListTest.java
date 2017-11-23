@@ -82,15 +82,14 @@ public class FlightListTest {
 		List newList = new ArrayList<>();
 	}
 
-	@Test
+//	@Test
 	public void testExtractedList2() {
-//		LocalDate today = LocalDate.ofYearDay(2017,315);
-//		FlightList list = new FlightList();
-//		list.showDepartures(today);
-//		list.showDeparturesToday();
-//		list.showDeparturesToday();
-//		System.out.print(list.getFlightById(1).getAirplane().getAirplaneName() +  "   ");
-//		System.out.print(list.getFlightById(1).getDestination() +  "   ");
-//		System.out.println(list.getFlightById(1).getFlightNo() +  "   ");
+		LocalDate day = LocalDate.now().plusDays(2);
+		FlightList list = new FlightList();
+		list.showDepartures(day);
+		
+		System.out.print(list.getFlightById(1).getAirplane().getAirplaneName() +  "   ");
+		System.out.print(list.getFlightById(1).getDestination() +  "   ");
+		System.out.println(list.getFlightById(1).getFlightNo() +  "   ");
 	}
 }
