@@ -3,11 +3,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Flight {
-	private int flightID;
+	
 	private CommercialFlight airplane = new A380();
 	
 	//Airplane("Airbus 380",5,5);
-			
+	
+	private static int counter = 0;
+	private int flightId;
 	private String flightNo;
 	private String origin;
 	private String destination;
@@ -18,7 +20,7 @@ public class Flight {
 	public Flight(CommercialFlight airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
 			LocalDateTime departureDate) {
 		super();
-		this.flightID = flightID++;
+		
 		this.airplane = airplane;
 		this.flightNo = flightNo;
 		this.origin = origin;
@@ -26,10 +28,16 @@ public class Flight {
 		this.priceFirst = priceFirst;
 		this.priceEconomy = priceEconomy;
 		this.departureDate = departureDate;
+		this.flightId = Flight.counter;
+		counter++;
+	}
+	
+	public int getCounter() {
+		return counter;
 	}
 
 	public int getFlightID() {
-		return flightID;
+		return flightId;
 	}
 
 	public CommercialFlight getAirplane() {
@@ -42,6 +50,10 @@ public class Flight {
 
 	public String getFlightNo() {
 		return flightNo;
+	}
+	
+	public void setFlightId(int id) {
+		this.flightId = id;
 	}
 
 	public void setFlightNo(String flightNo) {
@@ -86,6 +98,6 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [flightID=" + flightID + ", airplane=" + airplane;
+		return "Flight [flightID=" + flightId + ", airplane=" + airplane;
 	}
 }

@@ -1,12 +1,13 @@
 package models;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -40,35 +41,90 @@ public class FlightList {
 		return listOfFlights;
 	}
 	
+	public List<Flight> listFlightsWithAirlineCode(String flightCode){
+		List<Flight> exportOneFlight = 
+				listOfFlights.stream().
+				filter(p -> p.getFlightNo().equalsIgnoreCase(flightCode)).
+				  collect(Collectors.toList());
+		return exportOneFlight;
+	}
+	
+	public List<Flight> listFlightsSpecificDate(LocalDate date){
+		List<Flight> exportOneFlight = 
+				listOfFlights.stream().
+				filter(p -> p.getDepartureDate().toLocalDate().equals(date)).
+				  collect(Collectors.toList());
+		// System.out.println(exportOneFlight.size());
+		return exportOneFlight;
+	}
+	
+	public Flight getFlightById(int id) {
+		return listOfFlights.get(id);
+	}
+	
 	public void cancelAllFlights() {
 		listOfFlights.clear();
 	}
 	
 	public void showDepartures() {
+		Collections.sort(listOfFlights, new FlightComparator());
+		printDepartures(listOfFlights);
+	    
+	}
+	
+	public void showDeparturesToday() {
+		LocalDate now = LocalDate.now();
+		
+		List<Flight> exportOneFlight = 
+				listOfFlights.stream().
+				filter(p -> p.getDepartureDate().toLocalDate().equals(now)).
+				  collect(Collectors.toList());
+		// System.out.println(exportOneFlight.size());
+		
+		// flightList = list.listFlightsSpecificDate(date);
+		printDepartures(exportOneFlight);
+	}
+	
+	public void showDepartures(LocalDate date) {
+		List<Flight> exportOneFlight = 
+				listOfFlights.stream().
+				filter(p -> p.getDepartureDate().toLocalDate().equals(date)).
+				  collect(Collectors.toList());
+		// System.out.println(exportOneFlight.size());
+		// flightList = list.listFlightsSpecificDate(date);
+		printDepartures(exportOneFlight);
+	}
+		
+	private void printDepartures(List<Flight> list) {
 		LocalDateTime date = LocalDateTime.now();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 	    String out = date.format(format);
+	    int count=1;
 	    
-	    System.out.println("");
-		System.out.println("                                   WELCOME TO FLIGHTSYSTEM");
-		System.out.println("==========================================================================================");
+		System.out.println("");
+		System.out.println("                                      WELCOME TO FLIGHTSYSTEM");
+		System.out.println("===============================================================================================");
 		System.out.println("List of all flights:                        "+out);
 		System.out.println("");
-		System.out.println("AIRLINES        FROM            DEPARTURE DATE/TIME     TO              ARRIVAL DATE/TIME");
-		System.out.println("==========================================================================================");
+		System.out.println("AIRLINES        FLIGHT  FROM            DEPARTURE DATE/TIME     TO              ARRIVAL DATE/TIME");
+		System.out.println("===============================================================================================");
 		
 		
-		Collections.sort(listOfFlights, new FlightComparator());
-		
-		for (Flight nextFilght : listOfFlights) {
+		for (Flight nextFlight : list) {
+			// System.out.println(nextFlight.getFlightID());
 			// String text = nextFilght.getDepartureDate();
-			printRow(nextFilght.getAirplane().getAirplaneName(),16);
-			printRow(nextFilght.getOrigin(),16);
-			printRow(nextFilght.getDepartureDate().format(format),24);
-			printRow(nextFilght.getDestination(),16);
-			printRow(nextFilght.getDepartureDate().plusHours(FLIGHTDURATION).format(format),20);
+			nextFlight.setFlightId(count);
+			printRow(Integer.toString(nextFlight.getFlightID()),5);   
+			printRow(nextFlight.getAirplane().getAirplaneName(),16);
+			printRow(nextFlight.getFlightNo(),8);
+			printRow(nextFlight.getOrigin(),16);
+			printRow(nextFlight.getDepartureDate().format(format),24);
+			printRow(nextFlight.getDestination(),16);
+			printRow(nextFlight.getDepartureDate().plusHours(FLIGHTDURATION).format(format),20);
 			System.out.println();
+			count++;
 		}
+		
 	}
 	
 	public void loadXMLData() {
@@ -113,7 +169,10 @@ public class FlightList {
 					date= date.plusHours(extraHours);
 
 					Flight loadFlight = new Flight (justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
+										
 					listOfFlights.add(loadFlight);
+					
+					// System.out.println(listOfFlights.size());
 					
 //					System.out.print(eElement.getElementsByTagName("Time").item(0).getTextContent());
 //					System.out.print(" " +  eElement.getElementsByTagName("Destination").item(0).getTextContent());
