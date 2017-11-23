@@ -58,7 +58,7 @@ public class FlightList {
 		
 		for (Flight nextFilght : listOfFlights) {
 			// String text = nextFilght.getDepartureDate();
-			printRow(nextFilght.getAirplane().getAirplaneName(),16);
+		//	printRow(nextFilght.getAirplane().getAirplaneName(),16);
 			printRow(nextFilght.getOrigin(),16);
 			printRow(nextFilght.getDepartureDate().format(format),24);
 			printRow(nextFilght.getDestination(),16);
@@ -106,8 +106,8 @@ public class FlightList {
 					date= date.plusDays(extraDays);
 					date= date.plusHours(extraHours);
 
-					Flight loadFlight = new Flight (justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
-					listOfFlights.add(loadFlight);
+//					Flight loadFlight = new Flight (justOneAirplane,flight,ORIGIN, destination,FIXED_FIRSTCLASS_PRICE,FIXED_ECONOMY_PRICE,date);
+//					listOfFlights.add(loadFlight);
 					
 //					System.out.print(eElement.getElementsByTagName("Time").item(0).getTextContent());
 //					System.out.print(" " +  eElement.getElementsByTagName("Destination").item(0).getTextContent());

@@ -1,3 +1,5 @@
+package bookingTicket;
+import ui.Gender;
 
 public class Customer {
 
@@ -7,12 +9,13 @@ public class Customer {
 	private String email;
 	private String phone;
 	private String address;
-	private Gender gender;
+	//private Gender gender;
+	private String gender;
 	
 	public Customer() {
 		super();
 	}
-	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, Gender gender) {
+	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, String gender) {
 		
 		this.customerID = customerID;
 		this.firstName = firstName;
@@ -20,6 +23,7 @@ public class Customer {
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
+		this.gender = gender;
 		
 	}
 
@@ -47,12 +51,35 @@ public class Customer {
 		return address;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
   public String toString() {
-	  return "Customer id = " +customerID + " Name :" + firstName + " Email :" + email + " phone :" + phone; 
-   }
+	  return fixLengthString(customerID ,10) + " " + fixLengthString(firstName ,18) + " " +fixLengthString(surName  ,17)+ " " + 
+			  fixLengthString(email,17) + "  " +fixLengthString(phone,17) + " " + fixLengthString(address,17)+" "+
+			  fixLengthString(gender,17)
+			  
+			  ;
+			  
+		  }
+  
+  
+  public String fixLengthString(String start , int length) {		
+		if(start.length() >= length) {
+			return start.substring(0, length);
+		}else {
+			while(start.length() < length) {
+				start += " ";
+			}
+			return start;		
+	} //end if 
+	} //end of printbook method
+	
+	
+	public String fixLengthString(int start , int length) {
+		String startString = String.valueOf(start);
+		return fixLengthString(startString, length);
+	}
 
 @Override
 public int hashCode() {

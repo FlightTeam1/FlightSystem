@@ -2,20 +2,27 @@ package models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import bookingTicket.Customer;
+
 public class Flight {
-	private int flightID;
-	private Airplane airplane = new Airplane("Airbus 380",5,5);
+	private static int flightID=0;
+	//private Airplane airplane = new Airplane("Airbus 380",5,5);
+	private String airplane;
 	private String flightNo;
 	private String origin;
 	private String destination;
 	private int priceFirst=20000;
 	private int priceEconomy =5000;
 	private LocalDateTime departureDate;
-	
 
-	public Flight(Airplane airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
-			LocalDateTime departureDate) {
+	
+	public Flight() {
 		super();
+	}
+
+	public Flight(String airplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
+			LocalDateTime departureDate) {
+		
 		this.flightID = flightID++;
 		this.airplane = airplane;
 		this.flightNo = flightNo;
@@ -24,17 +31,18 @@ public class Flight {
 		this.priceFirst = priceFirst;
 		this.priceEconomy = priceEconomy;
 		this.departureDate = departureDate;
+		
 	}
 
 	public int getFlightID() {
 		return flightID;
 	}
 
-	public Airplane getAirplane() {
+	public String getAirplane() {
 		return airplane;
 	}
 
-	public void setAirplane(Airplane airplane) {
+	public void setAirplane(String airplane) {
 		this.airplane = airplane;
 	}
 
@@ -84,7 +92,10 @@ public class Flight {
 
 	@Override
 	public String toString() {
-		return "Flight [flightID=" + flightID + ", airplane=" + airplane;
+		return flightID + "         " + 
+				airplane+ "        " + 
+				origin + "         " + 
+				destination ;
 	}
 	
 }

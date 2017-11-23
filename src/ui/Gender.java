@@ -1,4 +1,5 @@
+package ui;
 
 public enum Gender {
-    MALE, FEMALe , UNKNOWN;
+    MALE, FEMALE , UNKNOWN;
 }
