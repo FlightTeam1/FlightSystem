@@ -18,6 +18,8 @@ public class Flight {
 	private int priceFirst=20000;
 	private int priceEconomy =5000;
 	private LocalDateTime departureDate;
+	
+	
 
 	public Flight(CommercialFlight justOneAirplane, String flightNo, String origin,  String destination, int priceFirst, int priceEconomy,
 			LocalDateTime departureDate) {

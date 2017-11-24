@@ -252,7 +252,7 @@ public abstract class Airplane implements CommercialFlight {
 	 */
 	@Override
 	public String toString() {
-		return "Airplane [airplaneName=" + airplaneName + ", seatFirst=" + seatFirst + ", seatEconomy=" + seatEconomy
-				+ ", reservedFlight=" + reservedFlight + ", status=" + status + "]";
+		return airplaneName + "           " + seatFirst + "                " + seatEconomy
+				+ "            " + reservedFlight + "                " + status  ;
 	}
 }

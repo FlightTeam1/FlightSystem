@@ -8,12 +8,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
+import bookingTicket.Customer;
 import bookingTicket.Reservation;
 import bookingTicket.ReservationList;
+import foodPackage.FoodEconomy;
+import models.A380;
 import models.Airplane;
+import models.CommercialFlight;
 import models.Flight;
+import models.FlightList;
 
 public class UI {
+	Flight reservedFlight;
+	Customer reservedCustomer;
 	ReservationList newList = new ReservationList();
 
 	public void printHeader() {
@@ -21,7 +28,7 @@ public class UI {
 		System.out.println("                 *************************************************************************************************");
 		System.out.println("           			                                      Flight Reservation System");
 		System.out.println("                 *************************************************************************************************");
-		System.out.println("CustID     First Name         SurName           email              phone   	      Address   	  Gender         TicketId  	  FlightNo    Food   Date    Airplane    Origin    Destination  totalPrice");
+		System.out.println("CustID     First Name         SurName           email              phone   	      Address   	  Gender         TicketId         Airplane        Origin        Destination  totalPrice");
 		
 	}
 	
@@ -42,8 +49,11 @@ public class UI {
 				break;
 			case 'A':
 				// add
+				reservedCustomer=createCustomer(sc);
+			case 'B':
+				FoodEconomy food = new FoodEconomy();
+				Reservation reserv = new Reservation(reservedCustomer, reservedFlight, food );
 				
-				addCustomer(sc);
 				break;
 			case 'D':
 				// delete by id
@@ -53,7 +63,10 @@ public class UI {
 			case 'H':
 				toPrintMenu();
 				break;
-			
+				
+			case 'S':
+				reservedFlight = selectFlight(sc);
+				break;
     
 			case 'Q':
 				newAction = false;
@@ -81,44 +94,55 @@ public class UI {
 		
 		
 		}
-
-		public void addCustomer(Scanner sc) {
-			int input = 0;
-			
-			
-			System.out.println("Input id");
+		
+		public Flight selectFlight(Scanner sc) {
+			FlightList list = new FlightList();
+			list.showDeparturesToday();
+			System.out.println("Select flight by id");
 			int id = getNumber(sc);
+			
+			return list.getFlightById(id);
+		}
+		
+
+		public Customer createCustomer(Scanner sc) {
+			//int input = 0;
+			Customer newCustomer =new Customer();;
+			int customerID = 1 + (int)(Math.random() * 5000+1); 
+			System.out.println("Select from the list");
+			
+			//int airplane = getNumber(sc);
+	
+			
 			System.out.println("Input first name");
 			String fName = getText(sc);
+			newCustomer.setFirstName(fName);
+			
 			System.out.println("Input sur name");
 			String sName = getText(sc);
+			newCustomer.setSurName(sName);
+
 			System.out.println("Input first email");
 			String email = getText(sc);
+			newCustomer.setEmail(email);
+
 			System.out.println("Input first phone");
 			String phone = getText(sc);
+			newCustomer.setPhone(phone);
+
 			System.out.println("Input first address");
 			String address = getText(sc);
+			newCustomer.setAddress(address);
+
 			System.out.println("Input enter gender");
 			String gender = genderText(sc);
-			System.out.println("Input first ticket id");
-			
-			int ticketID = getNumber(sc); 
-			System.out.println("Select airplane");
-			String airplane = getText(sc);
-			System.out.println("Enter Flight no");
-			String flightNo = getText(sc);
-			System.out.println("Enter origin");
-			String origin = getText(sc);
-			System.out.println("Enter destionation");
-			String destination = getText(sc);
-			System.out.println("Enter price 5000 EC  20000 FC");
-			int priceFirst = getNumber(sc);
-			System.out.println("Enter economy price");
-			int priceEconomy = getNumber(sc);
+			newCustomer.setGender(gender);
+		
 			LocalDateTime date =LocalDateTime.now();
 			
-			newList.addList(new Reservation(id, fName,sName, email, phone ,address ,gender,
-					ticketID,airplane,flightNo, origin, destination, priceFirst, priceEconomy,date,132.343));
+			return newCustomer;
+//			newList.addList(new Reservation(customerID, fName,sName, email, phone ,address ,gender,
+//					getFlight.getAirplane(),132.343));
 		}
 		
 		private LocalDate getDate(Scanner sc) {

@@ -15,7 +15,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, Gender gender) {
+	public Customer(int customerID, String firstName, String surName, String email, String phone, String address, String gender) {
 		
 		this.customerID = customerID;
 		this.firstName = firstName;
@@ -26,6 +26,30 @@ public class Customer {
 		this.gender = gender;
 	}
 
+	public String getSurName() {
+		return surName;
+	}
+	public void setSurName(String surName) {
+		this.surName = surName;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public int getId() {
 		return customerID;
 	}
