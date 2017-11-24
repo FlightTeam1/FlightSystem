@@ -165,13 +165,15 @@ public class UI_test {
 	
 	public void printTicket(Reservation reserv) {
 		System.out.println("**************************");
-		System.out.println("*   TICKET RESERVATION   *");
-		
-		System.out.println("*  " + reserv.getTicketID()+passengerRef.nextInt(999999));
-		System.out.println("*  " + reserv.getCustomer().getFirstName());
-		System.out.println("*  " + reserv.getCustomer().getSurName());
-		System.out.println("*  " + reserv.getFlight().getFlightNo());
-		System.out.println("*  " + reserv.getTotalPrice());
+		System.out.println("*   BOARDINGPASS         *");
+		System.out.println("* Origin: " + reserv.getFlight().getOrigin() );
+		System.out.println("* Destin: " + reserv.getFlight().getDestination());
+		System.out.println("*                        *");
+		System.out.println("* Ticketid: " + reserv.getTicketID()+passengerRef.nextInt(999999));
+		System.out.println("* Fistname  " + reserv.getCustomer().getFirstName());
+		System.out.println("* Surname   " + reserv.getCustomer().getSurName());
+		System.out.println("* Flight No " + reserv.getFlight().getFlightNo());
+		System.out.println("* Price     " + reserv.getTotalPrice());
 		System.out.println("*                        *"); 
 		System.out.println("*                        *"); 
 		System.out.println("**************************");
