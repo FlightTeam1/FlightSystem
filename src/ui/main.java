@@ -7,13 +7,5 @@ public class main {
 	
 		UI ui = new UI();	
 		ui.run();
-		
-		
-		
-
 	}
-	
-
-	
-
 }

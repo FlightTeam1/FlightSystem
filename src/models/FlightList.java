@@ -42,6 +42,10 @@ public class FlightList {
 		return listOfFlights;
 	}
 	
+	public List<Flight> getListOfLastResult(){
+		return listOfLastResult;
+	}
+	
 	public List<Flight> listFlightsWithAirlineCode(String flightCode){
 		List<Flight> exportOneFlight = 
 				listOfFlights.stream().

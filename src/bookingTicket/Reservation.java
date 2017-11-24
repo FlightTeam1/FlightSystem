@@ -1,5 +1,5 @@
 package bookingTicket;
-import foodPackage.Food;
+// import foodPackage.Food;
 import models.A380;
 import models.CommercialFlight;
 import models.Flight;
@@ -9,7 +9,7 @@ public class Reservation{
 	private double totalPrice;
 	private Customer customer;
 	private Flight flight;
-	private Food food;
+	// private Food food;
 
 	public Reservation(Customer customer, Flight flight, Food food ) {
 		this.customer=customer;
