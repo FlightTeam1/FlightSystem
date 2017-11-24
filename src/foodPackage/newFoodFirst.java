@@ -35,13 +35,14 @@ public class newFoodFirst implements newFood {
 		food.add(meny3);
 	}
 	
-	public void getFood() {
+	public double getFood() {
 		Messages msg = new Messages();
 		System.out.println("**First Class Menu service** \n");
 		System.out.println(msg.getStaticMenuInfo());
 
 		int menuOption = 0;
 		executeOperation(menuOption);
+		return totalPrice;
 	}
 
 	public void getList()

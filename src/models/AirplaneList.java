@@ -11,12 +11,12 @@ public class AirplaneList {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void addAirplane(CommercialFlight plane) {
-		airplaneList.remove(plane);
+	public void addAirplane(Airplane plane) {
+		airplaneList.add(plane);
 	}
 	
 	public void RemoveAirplane(Airplane plane) {
-		airplaneList.add(plane);
+		airplaneList.remove(plane);
 	}
 	
 	public void RemoveAirplane(int id) {

@@ -1,4 +1,5 @@
 package bookingTicket;
+import foodPackage.Food;
 // import foodPackage.Food;
 import models.A380;
 import models.CommercialFlight;
@@ -9,16 +10,18 @@ public class Reservation{
 	private double totalPrice;
 	private Customer customer;
 	private Flight flight;
-	// private Food food;
+	private Food food;
+	
 
-	public Reservation(Customer customer, Flight flight, Food food ) {
+	public Reservation(Customer customer, Flight flight, Food food, int ticketID) {
 		this.customer=customer;
 		this.flight=flight;
 		this.food=food;
+		this.ticketID = (int) Math.random()*100000;
 	}
 
 	public int getTicketID() {
-		return ticketID;
+		return (int) Math.random()*100000;
 	}
 
 	public void setTicketID(int ticketID) {

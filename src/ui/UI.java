@@ -11,7 +11,7 @@ import java.util.Scanner;
 import bookingTicket.Customer;
 import bookingTicket.Reservation;
 import bookingTicket.ReservationList;
-import foodPackage.FoodEconomy;
+// import foodPackage.FoodEconomy;
 import models.A380;
 import models.Airplane;
 import models.CommercialFlight;
@@ -51,8 +51,8 @@ public class UI {
 				// add
 				reservedCustomer=createCustomer(sc);
 			case 'B':
-				FoodEconomy food = new FoodEconomy();
-				Reservation reserv = new Reservation(reservedCustomer, reservedFlight, food );
+				// FoodEconomy food = new FoodEconomy();
+				//Reservation reserv = new Reservation(reservedCustomer, reservedFlight, food );
 				
 				break;
 			case 'D':
