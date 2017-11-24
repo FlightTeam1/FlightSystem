@@ -1,6 +1,7 @@
 package foodPackage;
 
 import java.text.DecimalFormat;
+import java.util.Random;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +9,15 @@ import java.util.Scanner;
 
 public class newFoodEconomy implements newFood {
 	List<newMenu> food = new ArrayList<>();
+	Random passengerRef = new Random();
 	public  double totalPrice;
 	private double itemPrice;
+	private double subTotal;
+    
 	static boolean order = true;
 	static Scanner input = new Scanner(System.in);
 	
+	List<newMenu> orderList = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		newFoodEconomy p = new newFoodEconomy();
@@ -22,9 +27,9 @@ public class newFoodEconomy implements newFood {
 	public newFoodEconomy() {
 		// TODO Auto-generated constructor stub
 		// Autogenerate menu 
-		newMenu meny1 = new newMenu("Chicken burger with choice of drink",2.00); 
-		newMenu meny2 = new newMenu("Kyckling File med Pommes",1.50);
-		newMenu meny3 = new newMenu("Beef Sandwich",1.00);
+		newMenu meny1 = new newMenu("Chicken burger with choice of drink",2.00,0); 
+		newMenu meny2 = new newMenu("Kyckling File med Pommes",1.50,0);
+		newMenu meny3 = new newMenu("Beef Sandwich",1.00,0);
 		
 		food.add(meny1);
 		food.add(meny2);
@@ -40,44 +45,60 @@ public class newFoodEconomy implements newFood {
 		executeOperation(menuOption);
 	}
 
-	public void executeOperation(int menuOption) {
-		int foodItem = 0;
-		Scanner input = new Scanner(System.in); 
-		do{
-			foodMenu();
-			menuOption = input.nextInt();    
+	
+	public void getList()
+    {
+        System.out.println("Select your choice of items \n");
+        System.out.println("1. Select Items from the menu \n" );
+        System.out.println("2. Print the list Menu\n ");      
+        System.out.println("3. Exit \n");
+        System.out.println("********************\n");
+    }
+    
+    
+    public void executeOperation(int menuOption) {
+        int foodId = 0;
+        input = new Scanner(System.in); 
+        do{
+            getList();
+            menuOption = input.nextInt();    
+            switch(menuOption){
+            case 1: 
+            	//orderList.clear();
+                addItem();
+                break;          
+            case 2:
+                getAllItems();
+                break;
+            case 3:
+                exit();
+                break;      
+            default:
+                System.out.println("Invalid option.");
+                getFood();
+            }   
+        } while(order); {
+        }
+    }
 
-			switch(menuOption){
-			case 1:
-				foodItem = 1;
-				itemPrice(foodItem);
-				break;
-			case 2:
-				foodItem = 2;
-				itemPrice(foodItem);
-				break;
-			case 3:
-				foodItem = 3;
-				itemPrice(foodItem);
-				break;
-			case 4:
-				exit();
-				break;      
-			default:
-				System.out.println("Invalid option.");
-				getFood();
-			}	
-		} while(order); {
-		}
-	}
-
+    public void addItem() {
+        Scanner scanner = new Scanner(System.in);
+        foodMenu();
+        System.out.println("Enter Index number u wish to add:\n");
+        int foodItem = scanner.nextInt(); 
+        itemPrice(foodItem);
+    }
+    
+    
+    
+    
 	@Override
 	public void foodMenu() {
 		// TODO Auto-generated method stub
 		System.out.println("Select your choice of items \n");
 		int count = 1;
 		
-		NumberFormat formatter = new DecimalFormat("$0.00");
+		NumberFormat formatter = new DecimalFormat("SEK 0.00");
 		
 		for (newMenu nextFood : food) {
 			System.out.println(count + "." + nextFood.getFoodName() + "     " + formatter.format(nextFood.getPrice()));
@@ -90,18 +111,24 @@ public class newFoodEconomy implements newFood {
 	@Override
 	public double itemPrice(int foodItem) {
 		// TODO Auto-generated method stub
-		if (foodItem>=1 && foodItem <=3) {
-			System.out.println("You ordered a " + food.get(foodItem-1).getFoodName());
+		if (foodItem>0 && foodItem <= food.size()) {
+			String selectedFood = food.get(foodItem-1).getFoodName();
+			
+			System.out.println("You ordered a " + selectedFood);
 			itemPrice = food.get(foodItem-1).getPrice();
-
-			quantity();
-			System.out.println("\nDo you want to add one more food Item (Yes/No):\n");
+			
+			double quantity = quantity();	// calculate sum
+			newMenu orderedFood = new newMenu(selectedFood,itemPrice,quantity);
+			
+			orderList.add(orderedFood);
+			
+			System.out.println("\nDo you want to add one more food Item (Y/N):\n");
 			String oneMore = input.next();
-			if("yes".equalsIgnoreCase(oneMore.toLowerCase())) {
-				executeOperation(foodItem);
+			if("y".equalsIgnoreCase(oneMore.toLowerCase())) {
+				addItem();
 			} else {
 				
-				exit();
+				executeOperation(foodItem);
 			} 	
 			return itemPrice;
 
@@ -111,34 +138,49 @@ public class newFoodEconomy implements newFood {
 
 	@Override
 	public double quantity() {
-		// TODO Auto-generated method stub
-		System.out.println("Enter quantity");       
-		double quantity = input.nextDouble();
-		calculatePrice(quantity, itemPrice);
-		return quantity;
+        System.out.println("Enter how much quantity you wish to order");       
+        double quantity = input.nextDouble();       
+        subTotal = itemPrice * quantity; 
+        System.out.println("\n Sub Total: SEK "+subTotal);              
+        totalPrice += itemPrice * quantity;
+        
+		return quantity;        
+    }
+	public void getAllItems() { 
+        if(orderList!=null && !orderList.isEmpty()){
+        	for (newMenu item : orderList){
+                if(item!=null){
+                    System.out.println(getString(item.getFoodName(),40) + " " + " Sub Total: "+item.getPrice() * item.getQuantity() );   
+                }
+            }
+        	System.out.println("=================================");
+            System.out.println("TotalPrice for food " +totalPrice);
+        } else {
+            System.out.println("No Data Found");
+        }            
+    }
+	
+	private String getString(String input, int length) {
+		String output =input + String.format("%" + (length - input.length()) + "s", "");
+		return output;
 	}
-
-	@Override
-	public double calculatePrice(double quantity, double itemPrice) {
-		// TODO Auto-generated method stub
-		double calculatePrice = quantity*itemPrice;
-		System.out.println("Subtotal: "+ calculatePrice);
-		totalPrice += calculatePrice;
-		return calculatePrice;
-	}
+	
+	
 
 	@Override
 	public void exit() {
 		// TODO Auto-generated method stub
 		order = false;
-		System.out.println("TotalPrice for food " +totalPrice);
+	
+		
+		System.out.println("TotalPrice for food        :" +totalPrice+"\nPassenger Reference number :"+passengerRef.nextInt(999999));
 		System.out.println("Enjoy your meal in flight ");
 	}
 
-	@Override
-	public List<newMenu> returnMenu() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+	
+
+	
 	
 }
