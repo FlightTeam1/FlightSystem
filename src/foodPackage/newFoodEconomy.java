@@ -115,11 +115,11 @@ public class newFoodEconomy implements newFood {
 		// TODO Auto-generated method stub
 		if (foodItem>0 && foodItem <= food.size()) {
 			String selectedFood = food.get(foodItem-1).getFoodName();
-			
-			System.out.println("You ordered a " + selectedFood);
 			itemPrice = food.get(foodItem-1).getPrice();
 			
 			double quantity = quantity();	// calculate sum
+			System.out.println("You ordered " + quantity + "pcs of " + selectedFood);
+			
 			newMenu orderedFood = new newMenu(selectedFood,itemPrice,quantity);
 			
 			orderList.add(orderedFood);

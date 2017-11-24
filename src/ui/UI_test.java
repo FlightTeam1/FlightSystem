@@ -80,19 +80,20 @@ public class UI_test {
 					newFoodEconomy start = new newFoodEconomy();
 					total += start.getFood();
 				}
-					
-				
-//				ListFood(seatClass);
-//				menuType =0;
-				// selectedFood = new Food("Hamburger",1.00,2.00);
-				// total =total + 2;
 				break;
 			case 4:
 				selectedCustomer=returnCustomer();
 				break;
 			case 5:
-				createPayment();
-				total=0;
+				if (selectedCustomer !=null) {
+					createPayment();
+					total=0;
+				}
+				else
+				{
+					System.out.println("Please, select or enter a new customer!");
+				}
+				
 				break;
 			case 11:
 				try {
